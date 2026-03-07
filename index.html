@@ -126,7 +126,7 @@ h1 .c{color:var(--cyan);display:block;}
 .step-box:hover .step-n{color:var(--gold);}
 .step-title{font-family:'Syne','Arial Black',Impact,sans-serif;font-weight:700;font-size:17px;color:var(--white);margin-bottom:8px;}
 .step-desc{font-size:13px;color:var(--grey);line-height:1.7;}
-#jobs .job-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+#jobs .job-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .job-card{border:1px solid var(--border);padding:36px 28px;position:relative;transition:border-color 0.3s,background 0.3s;}
 .job-card:hover{border-color:var(--gold);background:var(--card);}
 .job-badge{display:inline-block;margin-bottom:16px;font-family:'IBM Plex Mono','Courier New',Courier,monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:6px 12px;}
@@ -347,7 +347,7 @@ section{content-visibility:auto;contain-intrinsic-size:0 500px;}
   <div class="hero-left">
     <div class="eyebrow"><span class="dot-live"></span>Live Algorithmic Signals &middot; 24/7 Market Data</div>
     <h1>MARKET<br><span class="g">SIGNALS</span><br><span class="c">THAT WORK</span></h1>
-    <p class="hero-desc">Algorithmic trading signals, real-time market data, and professional remote market analysis &mdash; powered by the <strong style="color:var(--gold)">30&times; Bot Dashboard</strong>. 30&times; smarter research &amp; trading decisions.</p>
+    <p class="hero-desc">Algorithmic trading signals, real-time market data, and professional remote market analysis &mdash; powered by the <strong style="color:var(--gold)">30&times; Bot Dashboard</strong>. Trade 30&times; smarter.</p>
     <div class="hero-actions">
       <a href="#services" class="btn-gold">View Pricing</a>
       <a href="#jobs" class="btn-ghost">Book an Analyst</a>
@@ -364,23 +364,9 @@ section{content-visibility:auto;contain-intrinsic-size:0 500px;}
 
 <!-- TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-track">
-    <div class="t-item"><span class="t-sym">BTC/USD</span><span class="t-up">&#9650; +2.34%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">ETH/USD</span><span class="t-dn">&#9660; -0.87%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">XAU/USD</span><span class="t-up">&#9650; +0.52%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">EUR/USD</span><span class="t-dn">&#9660; -0.21%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">SOL/USD</span><span class="t-up">&#9650; +4.12%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">GBP/USD</span><span class="t-up">&#9650; +0.33%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">XAG/USD</span><span class="t-up">&#9650; +1.78%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">AMZN</span><span class="t-dn">&#9660; -1.05%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">BTC/USD</span><span class="t-up">&#9650; +2.34%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">ETH/USD</span><span class="t-dn">&#9660; -0.87%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">XAU/USD</span><span class="t-up">&#9650; +0.52%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">EUR/USD</span><span class="t-dn">&#9660; -0.21%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">SOL/USD</span><span class="t-up">&#9650; +4.12%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">GBP/USD</span><span class="t-up">&#9650; +0.33%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">XAG/USD</span><span class="t-up">&#9650; +1.78%</span></div><span style="color:var(--border)">&#183;</span>
-    <div class="t-item"><span class="t-sym">AMZN</span><span class="t-dn">&#9660; -1.05%</span></div>
+  <div class="ticker-track" id="ticker-track">
+    <!-- populated by JS -->
+    <div class="t-item"><span class="t-sym">LOADING</span><span class="t-up">&#8226;&#8226;&#8226;</span></div>
   </div>
 </div>
 
@@ -546,9 +532,9 @@ section{content-visibility:auto;contain-intrinsic-size:0 500px;}
 
 <!-- ANALYST BOOKING -->
 <section class="section section-alt" id="jobs">
-  <p class="sec-eye rev">// Professional Analysis &amp; Training</p>
-  <h2 class="sec-h2 rev">BOOK A SESSION OR <span>TRAINING</span></h2>
-  <p class="sec-sub rev">Remote market analysis, custom reports, and live visual training sessions on Zoom &mdash; all on demand. Book via PayPal then email your invoice to discuss.</p>
+  <p class="sec-eye rev">// Professional Analysis</p>
+  <h2 class="sec-h2 rev">BOOK A REMOTE <span>ANALYST</span></h2>
+  <p class="sec-sub rev">I can analyse, visualise and report on any Crypto, Stock, FX or Metal of your choice &mdash; remotely, on demand. Book a session via PayPal then email your invoice to discuss the job.</p>
   <div class="job-grid">
     <div class="job-card">
       <div class="job-badge wd">Business Days</div>
@@ -581,25 +567,6 @@ section{content-visibility:auto;contain-intrinsic-size:0 500px;}
       </ul>
       <a href="https://www.paypal.com/ncp/payment/XQHVH3YUUTWK6" target="_blank" class="book-btn">Book &middot; Pay &pound;50 via PayPal</a>
       <div class="after-note"><strong>&#9993; After Payment:</strong>Email invoice to Thirtyxtechresearch&#64;gmail.com<br>to discuss your job requirements.</div>
-    </div>
-
-    <!-- ZOOM TRAINING -->
-    <div class="job-card" style="border-color:rgba(0,212,255,0.3);position:relative;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--gold));"></div>
-      <div class="job-badge" style="background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.3);">&#127891; 3-Month Programme</div>
-      <div class="job-title">Visual Training on Zoom</div>
-      <div class="job-rate"><sup>&pound;</sup>799</div>
-      <div class="job-schedule">&#128249; Live Zoom Sessions &middot; 1 Quarter (3 Months)</div>
-      <ul class="job-perks">
-        <li>Live screen-share visual training sessions</li>
-        <li>Learn to read signals, charts &amp; confluence</li>
-        <li>Crypto, Forex, Stocks &amp; Metals covered</li>
-        <li>How to use the 30&times; Bot Dashboard</li>
-        <li>Signal interpretation &amp; trade planning</li>
-        <li>Q&amp;A and personalised feedback each session</li>
-      </ul>
-      <a href="https://www.paypal.com/ncp/payment/M7D9GECA4A4H8" target="_blank" class="book-btn" style="background:var(--cyan);color:#000;">Book &middot; Pay &pound;799 via PayPal</a>
-      <div class="after-note"><strong>&#9993; After Payment:</strong>Email invoice to Thirtyxtechresearch&#64;gmail.com<br>to schedule your Zoom sessions.</div>
     </div>
   </div>
   <div style="margin-top:28px;border:1px solid var(--border);padding:28px;background:var(--card);" class="rev">
@@ -635,8 +602,6 @@ section{content-visibility:auto;contain-intrinsic-size:0 500px;}
         <li style="margin-top:10px;padding-top:6px;border-top:1px solid var(--border);">
           <a href="https://www.paypal.com/ncp/payment/XDB3CUUNQBEGA" target="_blank">Analyst Mon&ndash;Fri &mdash; &pound;90</a></li>
         <li><a href="https://www.paypal.com/ncp/payment/XQHVH3YUUTWK6" target="_blank">Analyst Sat&ndash;Sun &mdash; &pound;50</a></li>
-        <li style="margin-top:10px;padding-top:6px;border-top:1px solid var(--border);">
-          <a href="https://www.paypal.com/ncp/payment/M7D9GECA4A4H8" target="_blank">Zoom Training (3 mo) &mdash; &pound;799</a></li>
       </ul>
     </div>
     <div>
@@ -891,6 +856,192 @@ function fp(v){
   if(n>=1)return'$'+n.toFixed(4);
   return'$'+n.toFixed(6);
 }
+</script>
+<!-- LIVE TICKER SCRIPT -->
+<script>
+(function(){
+  /* ─────────────────────────────────────────────────────────────
+     LIVE TICKER — multi-API with fallback chain
+     APIs tried in order (all free, no key required):
+       1. CoinGecko  → crypto + metals (24h % change)
+       2. Binance WS → crypto prices (backup, real-time stream)
+       3. open.er-api → FX rates
+       4. If all APIs fail → graceful static fallback shown
+     Refreshes every 60 seconds.
+  ──────────────────────────────────────────────────────────────── */
+
+  var COINS = [
+    {sym:'BTC/USD',  id:'bitcoin',  binance:'BTCUSDT'},
+    {sym:'ETH/USD',  id:'ethereum', binance:'ETHUSDT'},
+    {sym:'SOL/USD',  id:'solana',   binance:'SOLUSDT'},
+    {sym:'XAU/USD',  id:'pax-gold', binance:null},
+    {sym:'XAG/USD',  id:'silver',   binance:null},
+  ];
+  var STOCK_SYMS = ['AMZN','MSTR','COIN'];
+
+  // Static fallback values shown if ALL APIs fail
+  var STATIC_FALLBACK = [
+    {sym:'BTC/USD', price:84200,   chg:1.2},
+    {sym:'ETH/USD', price:1820,    chg:-0.5},
+    {sym:'SOL/USD', price:132,     chg:2.1},
+    {sym:'XAU/USD', price:3050,    chg:0.4},
+    {sym:'XAG/USD', price:33.8,    chg:0.7},
+    {sym:'GBP/USD', price:1.2940,  chg:0.1},
+    {sym:'EUR/USD', price:1.0830,  chg:-0.2},
+    {sym:'AMZN',    price:198.5,   chg:-0.8},
+  ];
+
+  var tickerData = {};
+  var cryptoLoaded = false;
+  var fxLoaded = false;
+
+  // ── Helpers ────────────────────────────────────────────────────
+  function arrow(c){ return c >= 0 ? '&#9650;' : '&#9660;'; }
+  function cls(c){   return c >= 0 ? 't-up' : 't-dn'; }
+  function fmtPct(c){ return (c >= 0 ? '+' : '') + c.toFixed(2) + '%'; }
+  function fmtPrice(p){
+    if(p >= 1000) return '$' + p.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    if(p >= 1)    return '$' + p.toFixed(4);
+    return '$' + p.toFixed(6);
+  }
+
+  function buildTickerHTML(){
+    var items = Object.values(tickerData);
+    if(!items.length) return;
+    var sep = '<span style="color:var(--border);margin:0 4px">&#183;</span>';
+    var single = items.map(function(d){
+      return '<div class="t-item">'
+        +'<span class="t-sym">'+d.sym+'</span>'
+        +'<span class="'+cls(d.chg)+'">'+arrow(d.chg)+' '+fmtPrice(d.price)+'</span>'
+        +'<span class="'+cls(d.chg)+'" style="font-size:9px;opacity:0.8;">'
+          +fmtPct(d.chg)+'</span>'
+        +'</div>';
+    }).join(sep);
+    var track = document.getElementById('ticker-track');
+    if(track) track.innerHTML = single + sep + single; // doubled for seamless loop
+  }
+
+  function setFallback(){
+    // Only use fallback if nothing loaded yet
+    if(Object.keys(tickerData).length === 0){
+      STATIC_FALLBACK.forEach(function(d){ tickerData[d.sym] = d; });
+      buildTickerHTML();
+    }
+  }
+
+  // ── 1. CoinGecko API ───────────────────────────────────────────
+  function fetchCoinGecko(){
+    var ids = COINS.map(function(c){return c.id;}).join(',');
+    var url = 'https://api.coingecko.com/api/v3/simple/price'
+            + '?ids='+ids+'&vs_currencies=usd&include_24hr_change=true';
+    return fetch(url, {mode:'cors'})
+      .then(function(r){
+        if(!r.ok) throw new Error('CoinGecko HTTP '+r.status);
+        return r.json();
+      })
+      .then(function(data){
+        var got = false;
+        COINS.forEach(function(c){
+          var d = data[c.id];
+          if(d && d.usd){
+            tickerData[c.sym] = {sym:c.sym, price:d.usd, chg:d.usd_24h_change||0};
+            got = true;
+          }
+        });
+        if(got){ cryptoLoaded = true; buildTickerHTML(); }
+        return got;
+      });
+  }
+
+  // ── 2. Binance REST fallback for crypto (very permissive CORS) ─
+  function fetchBinance(){
+    var syms = COINS.filter(function(c){return c.binance;});
+    var promises = syms.map(function(c){
+      return fetch('https://api.binance.com/api/v3/ticker/24hr?symbol='+c.binance)
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(d.lastPrice){
+            tickerData[c.sym] = {
+              sym:   c.sym,
+              price: parseFloat(d.lastPrice),
+              chg:   parseFloat(d.priceChangePercent)||0
+            };
+          }
+        })
+        .catch(function(){});
+    });
+    return Promise.all(promises).then(function(){
+      if(Object.keys(tickerData).length){ cryptoLoaded = true; buildTickerHTML(); }
+    });
+  }
+
+  // ── 3. FX via open.er-api ──────────────────────────────────────
+  function fetchFX(){
+    return fetch('https://open.er-api.com/v6/latest/USD', {mode:'cors'})
+      .then(function(r){
+        if(!r.ok) throw new Error('ER-API HTTP '+r.status);
+        return r.json();
+      })
+      .then(function(data){
+        if(!data.rates) return;
+        var gbp = data.rates['GBP'] ? (1/data.rates['GBP']) : null;
+        var eur = data.rates['EUR'] ? (1/data.rates['EUR']) : null;
+        if(gbp) tickerData['GBP/USD'] = {sym:'GBP/USD', price:gbp, chg:0};
+        if(eur) tickerData['EUR/USD'] = {sym:'EUR/USD', price:eur, chg:0};
+        fxLoaded = true;
+        buildTickerHTML();
+      });
+  }
+
+  // ── 4. Stocks via Yahoo Finance ────────────────────────────────
+  function fetchStock(sym){
+    var url = 'https://query1.finance.yahoo.com/v8/finance/chart/'+sym
+            + '?interval=1d&range=2d';
+    fetch(url, {mode:'cors'})
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var meta = data && data.chart && data.chart.result
+                && data.chart.result[0] && data.chart.result[0].meta;
+        if(!meta) return;
+        var price = parseFloat(meta.regularMarketPrice) || 0;
+        var prev  = parseFloat(meta.chartPreviousClose||meta.previousClose||price);
+        var chg   = prev ? ((price-prev)/prev*100) : 0;
+        if(price){ tickerData[sym] = {sym:sym, price:price, chg:chg}; buildTickerHTML(); }
+      })
+      .catch(function(){});
+  }
+
+  // ── Main fetch chain ───────────────────────────────────────────
+  function fetchAll(){
+    // Try CoinGecko first; if it fails try Binance
+    fetchCoinGecko()
+      .catch(function(){
+        return fetchBinance();
+      })
+      .catch(function(){
+        setFallback(); // last resort
+      });
+
+    fetchFX().catch(function(){
+      // FX fallback already in STATIC_FALLBACK via setFallback
+    });
+
+    STOCK_SYMS.forEach(fetchStock);
+
+    // If nothing has loaded after 5s, show static fallback
+    setTimeout(function(){
+      if(Object.keys(tickerData).length === 0) setFallback();
+    }, 5000);
+  }
+
+  // Start on DOM ready
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ fetchAll(); setInterval(fetchAll,60000); });
+  } else {
+    fetchAll();
+    setInterval(fetchAll, 60000);
+  }
+})();
 </script>
 </body>
 </html>
