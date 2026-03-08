@@ -1288,7 +1288,34 @@ function fp(v){
     window.sendChat();
   };
 
-  window.sendChat=async function(){
+  // Smart rule-based response engine — works on any static host
+  var KB=[
+    {k:['price','pricing','cost','how much','£','pay','payment'],r:"Here's our full pricing:\n\n**One-Time:**\n• Market Data Feed — £450\n• Market Signals — £1,420\n\n**Monthly (cancel anytime):**\n• Market Data — £49/mo\n• Market Signals — £149/mo\n• Pro Plan — £299/mo (signals + 1 analyst session)\n\n**Analyst Sessions:**\n• Mon–Fri — £90\n• Sat–Sun — £50\n\n**Training:**\n• Visual Training on Zoom — £799 (3-month programme)\n\nAll payments via PayPal. Email Thirtyxtechresearch@gmail.com after payment."},
+    {k:['product','offer','service','what do you','what you'],r:"We offer:\n\n**Signals & Data**\n• Market Data Feed (one-time or £49/mo)\n• Market Signals (one-time or £149/mo)\n• Pro Plan — signals + analyst session (£299/mo)\n\n**Analyst Sessions**\n• Remote analyst Mon–Fri £90 or Sat–Sun £50\n\n**Training**\n• Visual Training on Zoom — £799 for a full 3-month programme\n\nVisit the pricing section above or email Thirtyxtechresearch@gmail.com to get started."},
+    {k:['tier','t1','t2','t3','t4','t5','t6','t7','entry','signal','how does','how it work','system work'],r:"The 30X Bot uses a **7-Tier Entry System:**\n\n• **T1** — High Conviction: full indicator stack + AI confirm (1% risk)\n• **T2** — Momentum: relaxed indicators + price action (1% risk)\n• **T3** — Structure: BOS/CHoCH market structure (0.5% risk)\n• **T4** — Chart Pattern: 80%+ confidence pattern (0.25% risk)\n• **T5** — Order Flow: 2 of 7 order flow signals (0.3% risk)\n• **T6** — EMA + StochRSI crossover (0.2% risk)\n• **T7** — News/Event: AI-scored headline (0.15% risk)\n\nEvery signal includes entry, stop loss, take profit and RR ratio."},
+    {k:['telegram','group','join','access','subscribe','get signal'],r:"After purchasing any signal plan, email your PayPal invoice and Telegram username to **Thirtyxtechresearch@gmail.com** and you'll be added to the private Telegram group.\n\nSignals are delivered with full entry, SL, TP and confluence data."},
+    {k:['bot','algorithm','algo','automat','robot','how bot'],r:"The **30X Bot** is a fully automated algorithmic trading system that:\n\n• Monitors **14 instruments** — BTC, ETH, SOL, PAXG, AMZN, MSTR, COIN, PLTR + FX/metals\n• Runs across **9 timeframes** — 3m to 1W\n• Uses **7-tier entry logic** with price action, order flow & AI confirmation\n• Executes on Binance (primary), with Bybit & Bitget as mirrors\n• Pushes signals live to Telegram and the dashboard"},
+    {k:['risk','stop loss','take profit','atr','position size','drawdown'],r:"**Risk Management Rules:**\n\n• Base risk: 1% of account per trade\n• Stop Loss: 1.2× ATR from entry\n• Take Profit: 4.0× ATR from entry\n• Trailing Stop: 2.5× ATR from peak\n• Profit Lock: activates at 2% gain\n• Time Exit: closes after 48h if profit < 0.3%\n• Minimum Reward:Risk — 1.0\n• Max 2 open trades per symbol"},
+    {k:['analyst','analysis','report','custom','chart','visuali'],r:"Our **Remote Analyst** service provides custom market analysis on any asset — crypto, forex, stocks or metals.\n\n• **Mon–Fri** — £90 per session\n• **Sat–Sun** — £50 per session\n\nBook via PayPal then email your invoice to Thirtyxtechresearch@gmail.com to discuss your requirements."},
+    {k:['train','zoom','learn','course','education','student','teach','programme'],r:"We offer **Visual Training on Zoom** — a 3-month (1 quarter) live training programme for £799.\n\nYou'll learn:\n• The full 30X Bot strategy & 7-tier system\n• Price action, order blocks & market structure\n• Order flow reading & signal analysis\n• Risk management in practice\n\nBook via PayPal and email Thirtyxtechresearch@gmail.com to arrange your first session."},
+    {k:['indicator','ema','rsi','stoch','atr','cvd','vwap','volume'],r:"**Indicators used by the 30X Bot:**\n\n• EMA — Length 15 (trend direction)\n• RSI — Length 30 (momentum)\n• StochRSI — 30/3/3 (entry timing)\n• ATR — 14 bars (volatility, SL/TP sizing)\n• CVD — 14 bars (order flow direction)\n• VWAP — 50-bar rolling (fair value)\n• Volume vs 20-bar average (confirmation)"},
+    {k:['asset','symbol','market','crypto','stock','forex','fx','gold','silver','bitcoin','eth','btc','sol'],r:"The bot monitors **14 instruments:**\n\n**Crypto (live traded):** BTC, ETH, SOL, PAXG\n**Stocks (live traded):** AMZN, MSTR, COIN, PLTR\n**Forex (analysis):** EUR/USD, GBP/USD, USD/JPY, AUD/USD\n**Metals (analysis):** Gold (XAU), Silver (XAG)\n\nForex and metals are used for confluence — no live positions are opened on them."},
+    {k:['contact','email','reach','talk','speak','support'],r:"You can reach us at:\n\n📧 **Thirtyxtechresearch@gmail.com**\n🌐 30xtech.github.io/homepage\n𝕏 @utecryptoedu (crypto) | @utestockedu (stocks)\n▶ YouTube: @thirtyxtechresearch\n\nFor purchases, email your PayPal invoice after payment and we'll get you set up."},
+    {k:['pro','plan','best','recommend','which','difference'],r:"The **Pro Plan at £299/mo** is our most popular — it includes full market signals plus one analyst session per month.\n\nIf you're just starting out, **Market Signals at £149/mo** is a great entry point.\n\nFor a one-time purchase with no subscription, **Market Signals at £1,420** gives lifetime access.\n\nNot sure? Email Thirtyxtechresearch@gmail.com and we'll help you choose."},
+    {k:['order block','ob','fvg','fair value','market structure','bos','choch','price action','pa'],r:"**Price Action Concepts used by the bot:**\n\n• **Order Blocks** — last opposing candle before an impulse move. Scored 0–10 for quality\n• **Fair Value Gaps (FVG)** — 3-candle imbalance zones price tends to return to\n• **BOS** — Break of Structure: trend continuation signal\n• **CHoCH** — Change of Character: first sign of trend reversal\n• **Patterns** — Engulfing, Hammer, Shooting Star, Inside Bar, Momentum Candle, Rejection Wick"},
+  ];
+
+  function getReply(msg){
+    var m=msg.toLowerCase();
+    for(var i=0;i<KB.length;i++){
+      for(var j=0;j<KB[i].k.length;j++){
+        if(m.indexOf(KB[i].k[j])>-1) return KB[i].r;
+      }
+    }
+    return "Thanks for your question! For anything not covered here, please email **Thirtyxtechresearch@gmail.com** and we'll get back to you promptly.\n\nYou can also browse our pricing and services on this page, or tap one of the quick buttons below to explore common topics.";
+  }
+
+  window.sendChat=function(){
     if(_busy)return;
     var input=document.getElementById('ai-input');
     var msg=input.value.trim();
@@ -1299,26 +1326,14 @@ function fp(v){
     _busy=true;
     document.getElementById('ai-send-btn').disabled=true;
     setTyping(true);
-    _history.push({role:'user',content:msg});
-    try{
-      var res=await fetch('https://api.anthropic.com/v1/messages',{
-        method:'POST',
-        headers:{'Content-Type':'application/json','anthropic-dangerous-direct-browser-access':'true'},
-        body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,system:SYSTEM,messages:_history})
-      });
+    setTimeout(function(){
       setTyping(false);
-      var data=await res.json();
-      var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:'Sorry, I had trouble responding. Please email Thirtyxtechresearch@gmail.com for help.';
-      _history.push({role:'assistant',content:reply});
+      var reply=getReply(msg);
       addMsg(reply,'bot');
-    }catch(e){
-      setTyping(false);
-      addMsg('Connection error. Please email Thirtyxtechresearch@gmail.com for assistance.','bot');
-      _history.pop();
-    }
-    _busy=false;
-    document.getElementById('ai-send-btn').disabled=false;
-    var inp=document.getElementById('ai-input');if(inp)inp.focus();
+      _busy=false;
+      document.getElementById('ai-send-btn').disabled=false;
+      var inp=document.getElementById('ai-input');if(inp)inp.focus();
+    },600);
   };
 
 })();
